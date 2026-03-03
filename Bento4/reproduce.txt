@@ -1,0 +1,50 @@
+N1: Ap4DataBuffer.cpp:83 — null pointer passed to memcpy (copy constructor)
+./mp4dump N1_Ap4DataBuffer_83.mp4
+
+N2: Ap4MetaData.cpp:1463 — invalid enum DataType
+./mp4tag --show-tags N2_Ap4MetaData_1463.mp4
+
+N3: Ap4MetaData.cpp:1504 — invalid enum DataType
+./mp4split N3_Ap4MetaData_1504.mp4
+
+N4: Ap4MetaData.cpp:1505 — invalid enum DataLang
+./mp4pssh --insert 1077efecc0b24d02ace33c1e52e2fb4b:fuzz_pssh_data.bin N4_Ap4MetaData_1505.mp4 /tmp/out.mp4
+
+N5: Ap4MetaData.cpp:1522 — invalid enum DataType
+./mp4dump N5_Ap4MetaData_1522.mp4
+
+N6: Ap4MetaData.cpp:1523 — invalid enum DataLang
+./mp4dump N6_Ap4MetaData_1523.mp4
+
+N7: Ap4Processor.cpp:192 — null pointer on AP4_TfhdAtom
+./mp4decrypt N7_Ap4Processor_192.mp4 /tmp/out.mp4
+
+N8: Ap4Processor.cpp:211 — null pointer on AP4_TfhdAtom
+./mp4edit --remove moov/udta N8_Ap4Processor_211.mp4 /tmp/out.mp4
+
+N9: Ap4Processor.cpp:229 — null pointer on AP4_TfhdAtom
+./mp4decrypt N9_Ap4Processor_229.mp4 /tmp/out.mp4
+
+N10: Ap4CommonEncryption.cpp:3418 — null pointer passed to memset
+./mp4encrypt --method MPEG-CENC --key 1:00112233445566778899aabbccddeeff:00000000000000000000000000000000 N10_Ap4CommonEncryption_3418.mp4 /tmp/out.mp4
+
+N11: Ap4SampleEntry.cpp:446 — float-to-unsigned-int overflow
+./mp42aac N11_Ap4SampleEntry_446.mp4 /tmp/out.aac
+
+N12: Ap4Array.h:67 — null reference binding
+./mp4encrypt --method MPEG-CENC --key 1:00112233445566778899aabbccddeeff:00000000000000000000000000000000 N12_Ap4Array_67.mp4 /tmp/out.mp4
+
+N13: Ap4Utils.cpp:193 — float-to-unsigned-int overflow (AP4_ConvertTime)
+./mp4info N13_Ap4Utils_193.mp4
+
+N14: Ap4Utils.cpp:206 — float-to-unsigned-long-long overflow (AP4_FormatFractionString)
+./mp42hls N14_Ap4Utils_206.mp4
+
+N15: Mp4Fragment.cpp:982 — inf-to-unsigned-int overflow
+./mp4fragment N15_Mp4Fragment_982.mp4 /tmp/out.mp4
+
+N16: Mp4Pssh.cpp:91 — invalid vptr (type confusion)
+./mp4pssh --insert 1077efecc0b24d02ace33c1e52e2fb4b:fuzz_pssh_data.bin N16_Mp4Pssh_91.mp4 /tmp/out.mp4
+
+N17: Ap4Atom.cpp:763 — assertion failure (bytes_written <= atom->GetSize())
+./mp4pssh --insert 1077efecc0b24d02ace33c1e52e2fb4b:fuzz_pssh_data.bin N17_Ap4Atom_763.mp4 /tmp/out.mp4
